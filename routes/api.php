@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index']);
+
+Route::post('pay', [App\Http\Controllers\SSLCommerzController::class, 'pay']);
+Route::post('success', [App\Http\Controllers\SSLCommerzController::class, 'success']);
+Route::post('fail', [App\Http\Controllers\SSLCommerzController::class, 'fail']);
+Route::post('cancel', [App\Http\Controllers\SSLCommerzController::class, 'cancel']);
+Route::post('ipn', [App\Http\Controllers\SSLCommerzController::class, 'ipn']);
